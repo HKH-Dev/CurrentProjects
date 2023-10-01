@@ -12,20 +12,17 @@ public class Main {
     public static void main(String[] args) {
         PrestamoUq prestamoUq = inializarDatosPrueba();
 
-        //CRUD
-
-        //Create
-        agregarObjetos("001", "Televisor", "Entrenimiento", "Samsung", 2500, prestamoUq);
-        agregarObjetos("002", "Celular", "Dispositivos moviles", "Apple", 1300, prestamoUq);
-        agregarObjetos("003", "Laptop", "Computacion", "Razer", 4500, prestamoUq);
-        agregarObjetos("004", "Airpods", "Audio", "Sony", 280, prestamoUq);
-
         MainMenu mostrarMenu = new MainMenu();
-        mostrarMenu.mostrarMenu();
-
-
         Scanner userInput = new Scanner(System.in);
-        int userOption = userInput.nextInt();
+        int userOption;
+
+        //CRUD
+            //Create
+            agregarObjetos("001", "Televisor", "Entrenimiento", "Samsung", 2500, prestamoUq);
+            agregarObjetos("002", "Celular", "Dispositivos moviles", "Apple", 1300, prestamoUq);
+            agregarObjetos("003", "Laptop", "Computacion", "Razer", 4500, prestamoUq);
+            agregarObjetos("004", "Airpods", "Audio", "Sony", 280, prestamoUq);
+
 
         do {
             mostrarMenu.mostrarMenu();
@@ -34,9 +31,12 @@ public class Main {
             {
                 switch (userOption) {
                     case 1: //READ
+                        System.out.println("\n");
                         mostrarInformacionObjeto(prestamoUq);
+                        System.out.println("\n");
                         break;
                     case 2://CREATE
+                        System.out.println("\n");
                         System.out.println("Agregar Objeto");
                         System.out.println("Introduce el codigo de identificacion del Objeto");
                         String codigoObjeto = userInput.next();
@@ -51,21 +51,47 @@ public class Main {
                         double precio = userInput.nextDouble();
                         agregarObjetos(codigoObjeto, nombre, categoria, marca, precio, prestamoUq);
 
-                        System.out.println("-----> Informacion luego de agregar");
-                        mostrarInformacionCliente(prestamoUq);
+                        System.out.println("-----> Informacion luego de agregar"+"\n");
+                        mostrarInformacion(prestamoUq);
                         break;
 
-                    case 3://UPDATE
+                    case 3: // UPDATE
+                        System.out.println("\n");
                         System.out.println("Actualizar Objeto");
+                        System.out.println("Introduce el codigo de identificacion del Objeto a actualizar");
+                        String codigoObjetoActualizar = userInput.next();
+
+                        System.out.println("Introduce el nuevo nombre del Objeto");
+                        String nuevoNombre = userInput.next();
+                        System.out.println("Introduce la nueva categoria del Objeto");
+                        String nuevaCategoria = userInput.next();
+                        System.out.println("Introduce la nueva marca del Objeto");
+                        String nuevaMarca = userInput.next();
+                        System.out.println("Introduce el nuevo precio del Objeto");
+                        double nuevoPrecio = userInput.nextDouble();
+
+                        boolean updated = actualizarObjeto(codigoObjetoActualizar, nuevoNombre, nuevaCategoria, nuevaMarca, nuevoPrecio, prestamoUq);
+
+                        if (updated) {
+                            System.out.println("Objeto actualizado exitosamente.");
+                        } else {
+                            System.out.println("No se encontró un objeto con el código especificado.");
+                        }
+
+                        System.out.println("-----> Informacion luego de actualizar");
+                        mostrarInformacionObjeto(prestamoUq);
+                        System.out.println("\n");
                         break;
+
                     case 4://DELETE
                         System.out.println("Eliminar Objeto");
                         eliminarObjecto(prestamoUq);
                         System.out.println("-----> Informacion luego de eliminar");
-                        mostrarInformacionCliente(prestamoUq);
+                        mostrarInformacionObjeto(prestamoUq);
+                        System.out.println("\n");
                         break;
                     case 5://EXIT
-                        System.out.println("Salir");
+                        System.out.println("\nSalir\n");
                         break;
                     default:
                         System.out.println("Opcion no valida");
@@ -86,18 +112,24 @@ public class Main {
 
         private static void agregarObjetos(String codigoObjeto, String nombre, String categoria, String marca, double precio, PrestamoUq prestamoUq) {
             prestamoUq.agregarObjectos(codigoObjeto, nombre, categoria, marca, precio);
+
+        }
+        private static boolean actualizarObjeto(String codigoObjeto, String nuevoNombre, String nuevaCategoria, String nuevaMarca, double nuevoPrecio, PrestamoUq prestamoUq) {
+            return prestamoUq.actualizarObjeto(codigoObjeto, nuevoNombre, nuevaCategoria, nuevaMarca, nuevoPrecio);
         }
 
+
+        private static void mostrarInformacion(PrestamoUq prestamoUq) {
+        List<Objeto> listaObjeto = prestamoUq.obtenerObjetos();
+        int tamanioLista = listaObjeto.size();
+        for (int i = 0; i < tamanioLista; i++) {
+            Objeto objeto = listaObjeto.get(i);
+            System.out.println(objeto.toString());
+            }
+        }
         private static void eliminarObjecto(PrestamoUq prestamoUq) {
             prestamoUq.eliminarObjecto();
         }
 
-        private static void mostrarInformacionCliente(PrestamoUq prestamoUq) {
-            List<Objeto> listaObjeto = prestamoUq.obtenerObjetos();
-            int tamanioLista = listaObjeto.size();
-            for (int i = 0; i < tamanioLista; i++) {
-                Objeto objeto = listaObjeto.get(i);
-                System.out.println(objeto.toString());
-            }
-        }
+
 }

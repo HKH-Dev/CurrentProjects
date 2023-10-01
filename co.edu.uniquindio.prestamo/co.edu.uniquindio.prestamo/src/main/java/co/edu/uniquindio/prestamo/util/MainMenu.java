@@ -13,13 +13,15 @@ public class MainMenu {
     }
 
     public static void mostrarMenu() {
-        System.out.println("Bienvenido al sistema de prestamos de la Universidad del Quindio");
-        System.out.println("Seleccione una opcion");
+        System.out.println("--------------------------------------------------------------------\n");
+        System.out.println("Bienvenido al sistema de prestamos de la Universidad del Quindio\n");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("Seleccione una opcion\n");
         System.out.println("1 - Acceder a la informacion de los objetos");
         System.out.println("2 - Agregar Objeto");
         System.out.println("3 - Actualizar Objeto");
         System.out.println("4 - Eliminar Objeto");
-        System.out.println("5 - Salir");
+        System.out.println("5 - Salir\n");
     }
 
     CapturarDatosUtil capturarDatosUtil = new CapturarDatosUtil();

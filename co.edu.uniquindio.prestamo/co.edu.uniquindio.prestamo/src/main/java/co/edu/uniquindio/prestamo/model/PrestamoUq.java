@@ -30,6 +30,8 @@ public class PrestamoUq {
         this.listaObjetos = listaObjetos;
     }
 
+    //CRUD
+    //Create
   public boolean agregarObjectos(String codigoObjeto, String nombre, String categoria, String marca, double precio){
       Objeto objeto = new Objeto();
       objeto.setCodigoObjeto(codigoObjeto);
@@ -44,7 +46,30 @@ public class PrestamoUq {
     public List<Objeto> obtenerObjetos() {
         return getListaObjectos();
     }
+    //Read
+    public void mostrarInformacionObjeto(PrestamoUq prestamoUq) {
+        List<Objeto> listaObjeto = prestamoUq.obtenerObjetos();
+        int tamanioLista = listaObjeto.size();
+        for (int i = 0; i < tamanioLista; i++) {
+            Objeto objeto = listaObjeto.get(i);
+            System.out.println(objeto.toString());
+        }
+    }
+    //Update
+    public boolean actualizarObjeto(String codigoObjeto, String nuevoNombre, String nuevaCategoria, String nuevaMarca, double nuevoPrecio) {
+        for (Objeto objeto : listaObjetos) {
+            if (objeto.getCodigoObjeto().equalsIgnoreCase(codigoObjeto)) {
+                objeto.setNombre(nuevoNombre);
+                objeto.setCategoria(nuevaCategoria);
+                objeto.setMarca(nuevaMarca);
+                objeto.setPrecio(nuevoPrecio);
+                return true; // Object updated successfully
+            }
+        }
+        return false; // Object with the given code not found
+    }
 
+    //Delete
     public void eliminarObjecto() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Introduce el codigo de identificacion del Objeto");
@@ -61,14 +86,7 @@ public class PrestamoUq {
         }
     }
 
-    public void mostrarInformacionObjeto(PrestamoUq prestamoUq) {
-        List<Objeto> listaObjeto = prestamoUq.obtenerObjetos();
-        int tamanioLista = listaObjeto.size();
-        for (int i = 0; i < tamanioLista; i++) {
-            Objeto objeto = listaObjeto.get(i);
-            System.out.println(objeto.toString());
-        }
-    }
+
 
     @Override
     public String toString() {
