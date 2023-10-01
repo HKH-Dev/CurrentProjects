@@ -2,6 +2,7 @@ package co.edu.uniquindio.prestamo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PrestamoUq {
     private String nombre;
@@ -9,7 +10,6 @@ public class PrestamoUq {
 
     public PrestamoUq() {
     }
-
     public PrestamoUq(String nombre) {
         this.nombre = nombre;
     }
@@ -41,16 +41,16 @@ public class PrestamoUq {
         return true;
     }
 
-
-    /**
-     * Metodo para obtener la lista de todos los clientes
-     * @return List<Cliente>
-     */
     public List<Objeto> obtenerObjetos() {
         return getListaObjectos();
     }
 
-    public void eliminarObjecto(String codigoObjecto) {
+    public void eliminarObjecto() {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Introduce el codigo de identificacion del Objeto");
+
+        String codigoObjecto = userInput.next();
+
         int tamanioLista = getListaObjectos().size();
         for (int i=0; i < tamanioLista; i++){
             Objeto objeto = getListaObjectos().get(i);
