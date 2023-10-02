@@ -12,6 +12,9 @@ public class MainMenu {
         String codigoObjeto = CapturarDatosUtil.leerStringConsola("Introduce el codigo de identificacion del Objeto");
     }
 
+    /**
+     * Metodo para mostrar el menu
+     */
     public static void mostrarMenu() {
         System.out.println("--------------------------------------------------------------------\n");
         System.out.println("Bienvenido al sistema de prestamos de la Universidad del Quindio\n");
@@ -23,15 +26,4 @@ public class MainMenu {
         System.out.println("4 - Eliminar Objeto");
         System.out.println("5 - Salir\n");
     }
-
-    CapturarDatosUtil capturarDatosUtil = new CapturarDatosUtil();
-
-/*    public static void createObject = CapturarDatosUtil.rellenarArray();
-    {
-        for(int i=0;i<lista.length;i++){
-            String texto=JOptionPane.showInputDialog("Introduce un número");
-            lista[i]=Integer.parseInt(texto);
-        }
-
-    }*/
 }

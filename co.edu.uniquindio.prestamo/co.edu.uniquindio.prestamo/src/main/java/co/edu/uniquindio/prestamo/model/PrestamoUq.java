@@ -47,6 +47,11 @@ public class PrestamoUq {
         return getListaObjectos();
     }
     //Read
+
+    /**
+     * Mostrar informacion del objeto
+     * @param prestamoUq
+     */
     public void mostrarInformacionObjeto(PrestamoUq prestamoUq) {
         List<Objeto> listaObjeto = prestamoUq.obtenerObjetos();
         int tamanioLista = listaObjeto.size();
@@ -55,6 +60,16 @@ public class PrestamoUq {
             System.out.println(objeto.toString());
         }
     }
+
+    /**
+     * Metodo para actualizar el objeto
+     * @param codigoObjeto
+     * @param nuevoNombre
+     * @param nuevaCategoria
+     * @param nuevaMarca
+     * @param nuevoPrecio
+     * @return True or False
+     */
     //Update
     public boolean actualizarObjeto(String codigoObjeto, String nuevoNombre, String nuevaCategoria, String nuevaMarca, double nuevoPrecio) {
         for (Objeto objeto : listaObjetos) {
@@ -69,7 +84,9 @@ public class PrestamoUq {
         return false; // Object with the given code not found
     }
 
-    //Delete
+    /**
+     * Metodo para eliminar un objeto de la lista
+     */
     public void eliminarObjecto() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Introduce el codigo de identificacion del Objeto");

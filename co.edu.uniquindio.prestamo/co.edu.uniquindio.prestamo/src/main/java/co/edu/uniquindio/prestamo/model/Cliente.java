@@ -12,6 +12,13 @@ public class Cliente {
     public Cliente() {
     }
 
+    /**
+     * Constructor de la clase cliente
+     * @param nombre
+     * @param apellido
+     * @param cedula
+     * @param edad
+     */
     public Cliente(String nombre, String apellido, String cedula, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;

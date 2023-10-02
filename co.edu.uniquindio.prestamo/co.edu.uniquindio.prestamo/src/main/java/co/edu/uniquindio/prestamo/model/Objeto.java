@@ -12,6 +12,14 @@ public class Objeto {
     public Objeto() {
     }
 
+    /**
+     * Constructor de la clase Objeto
+     * @param codigoObjeto
+     * @param nombre
+     * @param categoria
+     * @param marca
+     * @param precio
+     */
     public Objeto(String codigoObjeto, String nombre, String categoria, String marca, double precio) {
         this.codigoObjeto = codigoObjeto;
         this.nombre = nombre;
