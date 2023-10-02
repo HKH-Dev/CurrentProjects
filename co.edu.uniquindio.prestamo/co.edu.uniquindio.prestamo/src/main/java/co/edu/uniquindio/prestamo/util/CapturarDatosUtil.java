@@ -4,6 +4,12 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class CapturarDatosUtil {
+    /**
+     * Metodo para leer una String por consola
+     * @param mensaje
+     * @return Un String ingresado por consola
+     */
+
     public static String leerStringConsola(String mensaje)
     {
         String captura="";
@@ -13,19 +19,21 @@ public class CapturarDatosUtil {
         return captura;
     }
 
+    /**
+     * Metodo para invocar las funciones
+     * @param args
+     */
     public static void main(String[] args) {
-
-        //Esto es opcional
         final int TAMANIO=10;
-
         int num[]=new int[TAMANIO];
-
-        //Invocamos las funciones
         rellenarArray(num);
-
         mostrarArray(num);
     }
 
+    /**
+     * Metodo para actualizar un arreglo en el punto deseado
+     * @param lista
+     */
     public static void rellenarArray(int lista[]){
         for(int i=0;i<lista.length;i++){
             String texto=JOptionPane.showInputDialog("Introduce un número");
@@ -33,6 +41,10 @@ public class CapturarDatosUtil {
         }
     }
 
+    /**
+     * Metodo para imprimir el arreglo
+     * @param lista
+     */
     public static void mostrarArray(int lista[]){
         for(int i=0;i<lista.length;i++){
             System.out.println("En el indice "+i+" esta el valor "+lista[i]);

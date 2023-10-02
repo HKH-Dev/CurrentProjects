@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * Metodo para interactuar con el menu
+     * @param args
+     */
     public static void main(String[] args) {
         PrestamoUq prestamoUq = inializarDatosPrueba();
 
