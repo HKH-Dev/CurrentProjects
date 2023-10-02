@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    /*ESTUDIANTES
+    Andres Felipe Cepeda Castrillon
+    * Kevin David Puerta Hidalgo*/
     /**
      * Metodo para interactuar con el menu
      * @param args
